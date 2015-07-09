@@ -14,8 +14,11 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
+# Filtramos los logs
 *.log
 
+#Ignoramos las bases de datos de sqlite
+*.sqlite
 
 # Windows shortcuts
 *.lnk
