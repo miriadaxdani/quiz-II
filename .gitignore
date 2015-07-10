@@ -20,6 +20,9 @@ $RECYCLE.BIN/
 #Ignoramos las bases de datos de sqlite
 *.sqlite
 
+#ignoramos el fichero de variables de entorno
+.env
+
 # Windows shortcuts
 *.lnk
 
