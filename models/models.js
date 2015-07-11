@@ -8,7 +8,7 @@ var path = require('path');
 var getEnv = process.env.DATABASE_URL;
 var getStorage = process.env.DATABASE_STORAGE;
 if(!getEnv) getEnv="sqlite://:@:/";
-if(!getStorage) getStorage="quiz.sqlite;";
+if(!getStorage) getStorage="quiz.sqlite";
 
 var url = getEnv.match(/(.*)\:\/\/(.*?)\:(.*)@(.*)\:(.*)\/(.*)/);
 var DB_name		= (url[6] || null);
