@@ -6,7 +6,9 @@ var path = require('path');
 //esto es para poder ejecutar en local con npm start
 //ya que si ejecutamos npm start, no cogemos las variables de entorno .ent, y DATABASE_URL es undefined y da error en el match
 var getEnv = process.env.DATABASE_URL;
+var getStorage = process.env.DATABASE_STORAGE;
 if(!getEnv) getEnv="sqlite://:@:/";
+if(!getStorage) getStorage="quiz.sqlite;";
 
 var url = getEnv.match(/(.*)\:\/\/(.*?)\:(.*)@(.*)\:(.*)\/(.*)/);
 var DB_name		= (url[6] || null);
@@ -16,7 +18,7 @@ var protocol	= (url[1] || null);
 var dialect		= (url[1] || null);
 var port		= (url[5] || null);
 var host		= (url[4] || null);
-var storage		= process.env.DATABASE_STORAGE;
+var storage		= getStorage;
 
 //cargar Modelo ORM
 var Sequelize = require('sequelize');
@@ -42,7 +44,7 @@ sequelize.sync().success(function() {
 	Quiz.count().success(function(count){
 		if(count === 0) { //la tabla se inicializa solo si esta vacia
 			Quiz.create({
-				pretunta: 'Capital de Italia',
+				pregunta: 'Capital de Italia',
 				respuesta: 'Roma'
 			})
 			.success(function(){console.log('Base de datos inicializada');});
